@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'screens/welcome/welcome_page.dart'; // Import halaman welcome
+// PENTING: Import halaman awal (Splash Screen)
+import 'screens/splash_screen.dart'; 
 
 void main() {
   runApp(const MyApp());
@@ -13,13 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'My App',
+      title: 'Strava KW', // Bisa diganti nama apps Mas
       theme: ThemeData(
-        // Set default font aplikasi jadi Poppins
-        textTheme: GoogleFonts.poppinsTextTheme(),
-        useMaterial3: true,
+        scaffoldBackgroundColor: const Color(0xFFF3F3F3),
       ),
-      home: const WelcomePage(),
+      home: const SplashScreen(), // Panggil file splash_screen.dart
     );
   }
 }
