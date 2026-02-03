@@ -16,11 +16,11 @@ class SignUpPage extends StatelessWidget {
         child: Stack(
           children: [
             // ==========================================
-            // 1. DEKORASI HEADER (Shape Ungu)
+            // 1. DEKORASI HEADER (Shape Ungu Kiri Atas)
             // ==========================================
             Positioned(
-              left: 0,
-              top: 0,
+              left: -1,
+              top: -5,
               child: Container(
                 width: 215,
                 height: 128,
@@ -39,27 +39,28 @@ class SignUpPage extends StatelessWidget {
             // 2. KARTU PUTIH UTAMA
             // ==========================================
             Positioned(
-              top: 185, // Posisi sesuai Figma
+              top: 185, // Mulai dari bawah header
               left: 0,
               right: 0,
-              bottom: 0, // Mentok sampai bawah
+              bottom: 0, // Mentok sampai bawah layar
               child: Container(
                 decoration: const ShapeDecoration(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(60), // Radius besar 60
+                      topLeft: Radius.circular(
+                        60,
+                      ), // Sudut atas kartu tetap besar
                       topRight: Radius.circular(60),
                     ),
                   ),
                 ),
-                // Agar konten bisa discroll
+                // SingleChildScrollView agar aman di layar kecil
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.symmetric(horizontal: 26),
                   child: Column(
                     children: [
-                      const SizedBox(height: 40), // Jarak dari lengkungan atas
-                      
+                      const SizedBox(height: 40), // Jarak dari atas kartu
                       // JUDUL
                       Text(
                         'Sign Up!',
@@ -69,7 +70,7 @@ class SignUpPage extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      
+
                       const SizedBox(height: 10),
 
                       // SUBJUDUL
@@ -78,37 +79,48 @@ class SignUpPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           color: Colors.black,
-                          fontSize: 16,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
 
-                      const SizedBox(height: 50),
+                      const SizedBox(height: 50), // Jarak ke input pertama
+                      // INPUT FORM 1: EMAIL
+                      _buildRoundedTextField(hint: "Email"),
 
-                      // INPUT FORMS (Pill Shape)
-                      _buildPillTextField(hint: "Email"),
-                      const SizedBox(height: 20),
-                      _buildPillTextField(hint: "Username"),
-                      const SizedBox(height: 20),
-                      _buildPillTextField(hint: "Password", isPassword: true),
+                      const SizedBox(height: 20), // Jarak antar input
+                      // INPUT FORM 2: USERNAME
+                      _buildRoundedTextField(hint: "Username"),
 
-                      const SizedBox(height: 40),
+                      const SizedBox(height: 20), // Jarak antar input
+                      // INPUT FORM 3: PASSWORD
+                      _buildRoundedTextField(
+                        hint: "Password",
+                        isPassword: true,
+                      ),
 
-                      // TOMBOL SIGN UP
+                      const SizedBox(height: 40), // Jarak ke tombol
+                      // TOMBOL SIGN UP (Cyan)
                       SizedBox(
-                        width: double.infinity,
-                        height: 54, // Tinggi sesuai Figma
+                        width: double.infinity, // Lebar penuh
+                        height: 54,
                         child: ElevatedButton(
                           onPressed: () {
-                            // Logika Sign Up nanti di sini
+                            // Logika Sign Up
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF00D7FF), // Warna Cyan
+                            backgroundColor: const Color(
+                              0xFF00D7FF,
+                            ), // Warna Cyan
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(60), // Radius 60
-                              side: const BorderSide(width: 1),
+                              borderRadius: BorderRadius.circular(
+                                15,
+                              ), // Radius 15 sesuai desain baru
+                              side: const BorderSide(
+                                width: 1,
+                              ), // Border hitam tipis
                             ),
-                            elevation: 0,
+                            elevation: 0, // Hilangkan bayangan
                           ),
                           child: Text(
                             'Sign Up',
@@ -121,32 +133,36 @@ class SignUpPage extends StatelessWidget {
                         ),
                       ),
 
-                      const SizedBox(height: 50), // Spacer ke bawah
-
-                      // FOOTER (Link balik ke Login)
+                      const SizedBox(height: 80), // Jarak ke footer
+                      // FOOTER (Link ke Sign In)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             'Already have an account? ',
-                            style: GoogleFonts.poppins(fontSize: 16),
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black,
+                            ),
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.pop(context); // Kembali ke halaman Login
+                              Navigator.pop(context); // Kembali ke Login
                             },
                             child: Text(
                               'Sign In',
                               style: GoogleFonts.poppins(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
+                                color: Colors.black,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      
-                      const SizedBox(height: 40), // Padding bawah tambahan
+
+                      const SizedBox(height: 30), // Padding bawah tambahan
                     ],
                   ),
                 ),
@@ -158,28 +174,37 @@ class SignUpPage extends StatelessWidget {
     );
   }
 
-  // Widget Helper untuk membuat Input Oval (Pill Shape)
-  Widget _buildPillTextField({required String hint, bool isPassword = false}) {
+  // Widget Helper untuk Input Field dengan Radius 15
+  Widget _buildRoundedTextField({
+    required String hint,
+    bool isPassword = false,
+  }) {
     return Container(
-      height: 54, // Tinggi Fixed sesuai Figma
+      height: 54,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(60), // Radius 60 agar oval sempurna
-        border: Border.all(width: 1, color: Colors.black), // Border hitam tipis
+        borderRadius: BorderRadius.circular(15), // Radius 15 sesuai desain baru
+        border: Border.all(width: 1, color: Colors.black), // Border hitam
       ),
       child: Center(
         child: TextField(
           obscureText: isPassword,
-          style: GoogleFonts.poppins(fontSize: 16, color: Colors.black),
+          style: GoogleFonts.poppins(
+            fontSize: 16,
+            color: Colors.black,
+            fontWeight: FontWeight.w500,
+          ),
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: GoogleFonts.poppins(
-              color: const Color(0xFFC2C2C2), // Warna abu-abu teks placeholder
-              fontSize: 18,
+              color: const Color(0xFFC2C2C2),
+              fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 25),
-            border: InputBorder.none, // Hilangkan garis bawah default
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 20,
+            ), // Padding dalam teks
+            border: InputBorder.none,
           ),
         ),
       ),

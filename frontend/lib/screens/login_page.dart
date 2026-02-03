@@ -20,16 +20,13 @@ class LoginPage extends StatelessWidget {
             // ===============================================
             // 1. HEADER (Background Biru & Ungu)
             // ===============================================
-            
+
             // Latar Biru Atas
             Positioned(
               left: 0,
               top: 0,
               right: 0,
-              child: Container(
-                height: 250, 
-                color: const Color(0xFF0096FF),
-              ),
+              child: Container(height: 250, color: const Color(0xFF0096FF)),
             ),
 
             // Bentuk Ungu (Kiri Atas)
@@ -54,16 +51,19 @@ class LoginPage extends StatelessWidget {
             // 2. GAMBAR PELARI
             // ===============================================
             Positioned(
-              top: 47 + MediaQuery.of(context).padding.top, 
+              top: 47 + MediaQuery.of(context).padding.top,
               left: 0,
               right: 0,
               child: Center(
                 child: Image.asset(
-                  'assets/images/runner.png', 
+                  'assets/images/runner.png',
                   height: 100,
                   fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Icon(Icons.directions_run, size: 80, color: Colors.white),
+                  errorBuilder: (context, error, stackTrace) => const Icon(
+                    Icons.directions_run,
+                    size: 80,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -74,8 +74,8 @@ class LoginPage extends StatelessWidget {
             Positioned(
               left: 0,
               right: 0,
-              top: 200, 
-              bottom: 0, 
+              top: 200,
+              bottom: 0,
               child: Container(
                 decoration: const ShapeDecoration(
                   color: Colors.white,
@@ -87,7 +87,10 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 30,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -114,7 +117,7 @@ class LoginPage extends StatelessWidget {
 
                       // Input Username
                       _buildTextField(hint: "Username"),
-                      
+
                       const SizedBox(height: 15),
 
                       // Input Password
@@ -181,10 +184,14 @@ class LoginPage extends StatelessWidget {
                               color: Colors.grey.withOpacity(0.2),
                               blurRadius: 5,
                               spreadRadius: 1,
-                            )
-                          ]
+                            ),
+                          ],
                         ),
-                        child: const Icon(Icons.g_mobiledata, size: 40, color: Colors.blue),
+                        child: const Icon(
+                          Icons.g_mobiledata,
+                          size: 40,
+                          color: Colors.blue,
+                        ),
                       ),
 
                       const SizedBox(height: 30),
@@ -202,7 +209,9 @@ class LoginPage extends StatelessWidget {
                               // --- NAVIGASI KE SIGN UP PAGE ---
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => const SignUpPage()),
+                                MaterialPageRoute(
+                                  builder: (context) => const SignUpPage(),
+                                ),
                               );
                             },
                             child: Text(
@@ -229,7 +238,7 @@ class LoginPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      
+
                       const SizedBox(height: 40),
                     ],
                   ),
@@ -253,7 +262,7 @@ class LoginPage extends StatelessWidget {
             color: Colors.black.withOpacity(0.05),
             blurRadius: 5,
             offset: const Offset(0, 2),
-          )
+          ),
         ],
       ),
       child: TextField(
@@ -261,7 +270,10 @@ class LoginPage extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: GoogleFonts.poppins(color: const Color(0xFFC2C2C2)),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 15,
+          ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
             borderSide: const BorderSide(width: 1, color: Colors.black),
