@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'signup_page.dart'; // Pastikan file ini ada
+import 'signup_page.dart';
+import 'home_page.dart'; // [BARU] Import halaman Home
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -229,7 +230,17 @@ class LoginPage extends StatelessWidget {
 
                       // Footer Text: Continue without account
                       GestureDetector(
-                        onTap: () {},
+                        // [MODIFIKASI DI SINI]
+                        onTap: () {
+                          // Navigasi ke HomePage dan menghapus LoginPage dari back-stack
+                          // Agar user tidak bisa kembali ke login saat tekan back
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(),
+                            ),
+                          );
+                        },
                         child: Text(
                           'Continue without account',
                           style: GoogleFonts.poppins(
