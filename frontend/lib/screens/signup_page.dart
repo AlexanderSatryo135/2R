@@ -9,15 +9,12 @@ class SignUpPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: const Color(0xFF0096FF), // Background Biru (Header)
+      backgroundColor: const Color(0xFF0096FF),
       body: SizedBox(
         height: size.height,
         width: size.width,
         child: Stack(
           children: [
-            // ==========================================
-            // 1. DEKORASI HEADER (Shape Ungu Kiri Atas)
-            // ==========================================
             Positioned(
               left: -1,
               top: -5,
@@ -35,33 +32,27 @@ class SignUpPage extends StatelessWidget {
               ),
             ),
 
-            // ==========================================
-            // 2. KARTU PUTIH UTAMA
-            // ==========================================
             Positioned(
-              top: 185, // Mulai dari bawah header
+              top: 185,
               left: 0,
               right: 0,
-              bottom: 0, // Mentok sampai bawah layar
+              bottom: 0,
               child: Container(
                 decoration: const ShapeDecoration(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(
-                        60,
-                      ), // Sudut atas kartu tetap besar
+                      topLeft: Radius.circular(60),
                       topRight: Radius.circular(60),
                     ),
                   ),
                 ),
-                // SingleChildScrollView agar aman di layar kecil
+
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(horizontal: 26),
                   child: Column(
                     children: [
-                      const SizedBox(height: 40), // Jarak dari atas kartu
-                      // JUDUL
+                      const SizedBox(height: 40),
                       Text(
                         'Sign Up!',
                         style: GoogleFonts.poppins(
@@ -73,7 +64,6 @@ class SignUpPage extends StatelessWidget {
 
                       const SizedBox(height: 10),
 
-                      // SUBJUDUL
                       Text(
                         'Create a new account in order \nto Sign In later!',
                         textAlign: TextAlign.center,
@@ -84,43 +74,31 @@ class SignUpPage extends StatelessWidget {
                         ),
                       ),
 
-                      const SizedBox(height: 50), // Jarak ke input pertama
-                      // INPUT FORM 1: EMAIL
+                      const SizedBox(height: 50),
                       _buildRoundedTextField(hint: "Email"),
 
-                      const SizedBox(height: 20), // Jarak antar input
-                      // INPUT FORM 2: USERNAME
+                      const SizedBox(height: 20),
                       _buildRoundedTextField(hint: "Username"),
 
-                      const SizedBox(height: 20), // Jarak antar input
-                      // INPUT FORM 3: PASSWORD
+                      const SizedBox(height: 20),
                       _buildRoundedTextField(
                         hint: "Password",
                         isPassword: true,
                       ),
 
-                      const SizedBox(height: 40), // Jarak ke tombol
-                      // TOMBOL SIGN UP (Cyan)
+                      const SizedBox(height: 40),
                       SizedBox(
-                        width: double.infinity, // Lebar penuh
+                        width: double.infinity,
                         height: 54,
                         child: ElevatedButton(
-                          onPressed: () {
-                            // Logika Sign Up
-                          },
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(
-                              0xFF00D7FF,
-                            ), // Warna Cyan
+                            backgroundColor: const Color(0xFF00D7FF),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                15,
-                              ), // Radius 15 sesuai desain baru
-                              side: const BorderSide(
-                                width: 1,
-                              ), // Border hitam tipis
+                              borderRadius: BorderRadius.circular(15),
+                              side: const BorderSide(width: 1),
                             ),
-                            elevation: 0, // Hilangkan bayangan
+                            elevation: 0,
                           ),
                           child: Text(
                             'Sign Up',
@@ -133,8 +111,8 @@ class SignUpPage extends StatelessWidget {
                         ),
                       ),
 
-                      const SizedBox(height: 80), // Jarak ke footer
-                      // FOOTER (Link ke Sign In)
+                      const SizedBox(height: 80),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -148,7 +126,7 @@ class SignUpPage extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.pop(context); // Kembali ke Login
+                              Navigator.pop(context);
                             },
                             child: Text(
                               'Sign In',
@@ -162,7 +140,7 @@ class SignUpPage extends StatelessWidget {
                         ],
                       ),
 
-                      const SizedBox(height: 30), // Padding bawah tambahan
+                      const SizedBox(height: 30),
                     ],
                   ),
                 ),
@@ -174,7 +152,6 @@ class SignUpPage extends StatelessWidget {
     );
   }
 
-  // Widget Helper untuk Input Field dengan Radius 15
   Widget _buildRoundedTextField({
     required String hint,
     bool isPassword = false,
@@ -183,8 +160,8 @@ class SignUpPage extends StatelessWidget {
       height: 54,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(15), // Radius 15 sesuai desain baru
-        border: Border.all(width: 1, color: Colors.black), // Border hitam
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(width: 1, color: Colors.black),
       ),
       child: Center(
         child: TextField(
@@ -201,9 +178,7 @@ class SignUpPage extends StatelessWidget {
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 20,
-            ), // Padding dalam teks
+            contentPadding: const EdgeInsets.symmetric(horizontal: 20),
             border: InputBorder.none,
           ),
         ),

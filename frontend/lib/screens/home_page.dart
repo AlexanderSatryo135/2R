@@ -7,23 +7,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5), // Background Abu Muda
+      backgroundColor: const Color(0xFFF5F5F5),
       body: Stack(
         children: [
-          // ==========================================
-          // 1. KONTEN UTAMA (BISA DI-SCROLL)
-          // ==========================================
           SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(
-              20,
-              0,
-              20,
-              120,
-            ), // Bawah dikasih jarak buat Navbar
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 120),
+
             child: Column(
               children: [
-                const SizedBox(height: 50), // Jarak untuk Status Bar
-                // --- HEADER SECTION ---
+                const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -35,11 +27,10 @@ class HomePage extends StatelessWidget {
                           style: GoogleFonts.poppins(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Colors
-                                .black, // Warna teks hitam (karena background putih/abu)
+                            color: Colors.black,
                           ),
                         ),
-                        // Garis biru di atas (hiasan header dari desain Mas)
+
                         Container(
                           margin: const EdgeInsets.only(top: 5),
                           height: 4,
@@ -51,16 +42,14 @@ class HomePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // Profile Picture
+
                     Container(
                       width: 50,
                       height: 50,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                          image: NetworkImage(
-                            "https://placehold.co/50x50",
-                          ), // Ganti dengan foto asli
+                          image: NetworkImage("https://placehold.co/50x50"),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -69,9 +58,6 @@ class HomePage extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 25),
-
-                // --- SHOE SELECTOR (KOTAK SEPATU) ---
-                // Sesuai gambar screenshot Mas
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(vertical: 15),
@@ -82,7 +68,7 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _buildShoeIcon(Icons.directions_run, true), // Aktif
+                      _buildShoeIcon(Icons.directions_run, true),
                       _buildShoeIcon(Icons.directions_run, false),
                       _buildShoeIcon(Icons.directions_run, false),
                       _buildShoeIcon(Icons.directions_run, false),
@@ -91,8 +77,6 @@ class HomePage extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 20),
-
-                // --- TOTAL DISTANCE ---
                 Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
@@ -121,11 +105,8 @@ class HomePage extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 20),
-
-                // --- GRID PACE & CALORIES ---
                 Row(
                   children: [
-                    // Kotak Kiri (Pace)
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.all(20),
@@ -158,7 +139,6 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 15),
-                    // Kotak Kanan (Calories)
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.all(20),
@@ -195,7 +175,6 @@ class HomePage extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
-                // --- LAST ACTIVITY ---
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(20),
@@ -224,8 +203,6 @@ class HomePage extends StatelessWidget {
                 ),
 
                 const SizedBox(height: 20),
-
-                // --- PETA (MAP) ---
                 Container(
                   height: 300,
                   width: double.infinity,
@@ -234,7 +211,6 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(color: Colors.grey.shade300),
                     image: const DecorationImage(
-                      // Placeholder Peta (Ganti dengan Google Maps nanti)
                       image: NetworkImage(
                         "https://placehold.co/372x325/png?text=Map+View",
                       ),
@@ -260,9 +236,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
 
-          // ==========================================
-          // 2. BOTTOM NAVIGATION BAR (FLOATING)
-          // ==========================================
           Positioned(
             bottom: 30,
             left: 20,
@@ -294,7 +267,7 @@ class HomePage extends StatelessWidget {
                       shape: BoxShape.circle,
                       border: Border.all(width: 3, color: Colors.black),
                     ),
-                    child: const Icon(Icons.circle, size: 20), // Icon Record
+                    child: const Icon(Icons.circle, size: 20),
                   ),
                   IconButton(
                     onPressed: () {},
@@ -313,7 +286,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // Widget Kecil untuk Ikon Sepatu
+  //Icon Sepatu
   Widget _buildShoeIcon(IconData icon, bool isActive) {
     return Icon(
       icon,

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'signup_page.dart';
-import 'home_page.dart'; // [BARU] Import halaman Home
+import 'home_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Mengambil ukuran layar agar responsif
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -18,11 +17,6 @@ class LoginPage extends StatelessWidget {
         height: size.height,
         child: Stack(
           children: [
-            // ===============================================
-            // 1. HEADER (Background Biru & Ungu)
-            // ===============================================
-
-            // Latar Biru Atas
             Positioned(
               left: 0,
               top: 0,
@@ -30,7 +24,6 @@ class LoginPage extends StatelessWidget {
               child: Container(height: 250, color: const Color(0xFF0096FF)),
             ),
 
-            // Bentuk Ungu (Kiri Atas)
             Positioned(
               left: 0,
               top: 0,
@@ -48,9 +41,6 @@ class LoginPage extends StatelessWidget {
               ),
             ),
 
-            // ===============================================
-            // 2. GAMBAR PELARI
-            // ===============================================
             Positioned(
               top: 47 + MediaQuery.of(context).padding.top,
               left: 0,
@@ -69,9 +59,6 @@ class LoginPage extends StatelessWidget {
               ),
             ),
 
-            // ===============================================
-            // 3. KARTU PUTIH (FORM LOGIN)
-            // ===============================================
             Positioned(
               left: 0,
               right: 0,
@@ -95,7 +82,6 @@ class LoginPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // Judul
                       Text(
                         'Welcome!',
                         style: GoogleFonts.poppins(
@@ -115,25 +101,18 @@ class LoginPage extends StatelessWidget {
                       ),
 
                       const SizedBox(height: 30),
-
-                      // Input Username
                       _buildTextField(hint: "Username"),
 
                       const SizedBox(height: 15),
-
-                      // Input Password
                       _buildTextField(hint: "Password", isPassword: true),
 
                       const SizedBox(height: 25),
 
-                      // Tombol Sign In (Login)
                       SizedBox(
                         width: double.infinity,
                         height: 50,
                         child: ElevatedButton(
-                          onPressed: () {
-                            // Logika login nanti di sini
-                          },
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color(0xFF00D7FF),
                             shape: RoundedRectangleBorder(
@@ -155,7 +134,6 @@ class LoginPage extends StatelessWidget {
 
                       const SizedBox(height: 20),
 
-                      // Divider "Or Sign In with"
                       Row(
                         children: [
                           const Expanded(child: Divider(color: Colors.black)),
@@ -172,7 +150,6 @@ class LoginPage extends StatelessWidget {
 
                       const SizedBox(height: 15),
 
-                      // Logo Google Placeholder
                       Container(
                         width: 50,
                         height: 50,
@@ -197,7 +174,6 @@ class LoginPage extends StatelessWidget {
 
                       const SizedBox(height: 30),
 
-                      // Footer Text: Sign Up (NAVIGASI DITAMBAHKAN DI SINI)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -207,7 +183,6 @@ class LoginPage extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              // --- NAVIGASI KE SIGN UP PAGE ---
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -219,7 +194,7 @@ class LoginPage extends StatelessWidget {
                               'Sign Up',
                               style: GoogleFonts.poppins(
                                 fontSize: 14,
-                                fontWeight: FontWeight.w700, // Bold
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
@@ -228,12 +203,8 @@ class LoginPage extends StatelessWidget {
 
                       const SizedBox(height: 90),
 
-                      // Footer Text: Continue without account
                       GestureDetector(
-                        // [MODIFIKASI DI SINI]
                         onTap: () {
-                          // Navigasi ke HomePage dan menghapus LoginPage dari back-stack
-                          // Agar user tidak bisa kembali ke login saat tekan back
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
@@ -262,7 +233,6 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  // Widget Helper untuk Input Field
   Widget _buildTextField({required String hint, bool isPassword = false}) {
     return Container(
       decoration: BoxDecoration(
